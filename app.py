@@ -23,7 +23,6 @@ from branca.element import Template, MacroElement
 # echo Running Streamlit ...
 # streamlit run app.py --server.runOnSave true
 
-
 # ---------- Cabeçalho com logo ----------
 
 from PIL import Image
@@ -53,7 +52,6 @@ st.markdown(
 # ---------- 1. Título ----------
 st.title("Fluxos de municípios para o Inova Parque")
 
-
 # ---------- 2. Carregar dados ----------
 df = pd.read_csv("AtendMunicipios.csv")
 df_municipios = df.copy()
@@ -71,13 +69,12 @@ df = df.merge(geo_df[["Codigo", "nome", "latitude", "longitude"]], on="Codigo", 
 df["Municipio"] = df["nome"]
 df = df.drop(columns=["nome"])
 
-# Coordenadas de Contagem
+# Coordenadas de Inova Parque em Contagem
 # contagem_coords = geo_df[geo_df["Codigo"] == 311860][["latitude", "longitude"]].iloc[0].tolist()
 contagem_coords = geo_df[geo_df["Codigo"] == 100000][["latitude", "longitude"]].iloc[0].tolist()
 
 
 # ---------- 3. Interface de Filtros ----------
-
 # Lista de serviços
 servico_legenda = {
     'S1':  "Pronto Atendimento Emergência",
@@ -179,7 +176,6 @@ st.subheader("Atendimentos previstos no Inova Parque")
 st_data = st_folium(m, width=1600, height=800)
 
 
-
 # -- FLUXO INTERNO A CONTAGEM: UPAS E UBS --
 
 # Taxa de encaminhamento das UPAs de Contagem
@@ -225,14 +221,6 @@ unid_coords = [inova_row['latitude'], inova_row['longitude']]
 # ---------- 4. Criar o mapa ----------
 mu = folium.Map(location=unid_coords, zoom_start=15, tiles="CartoDB positron")
 
-# # Filtro de serviços
-# servicos_selecionados_upa_ubs = st.multiselect(
-#     "Selecione os serviços:",
-#     # options=list(servico_legenda.keys()),
-#     options=list(servico_legenda.values()),
-#     default=[],  # Nenhum selecionado inicialmente
-#     key="servicos_upa_ubs")
-
 # Filtro de serviços - mostra descrições
 servicos_descricoes_selecionadas_upa_ubs = st.multiselect(
     "Selecione os serviços:", 
@@ -246,7 +234,6 @@ descricao_para_key_upa_ubs = {v: k for k, v in servico_legenda.items()}
 
 # Filtro de serviços
 servicos_selecionados_upa_ubs = [descricao_para_key_upa_ubs[desc] for desc in servicos_descricoes_selecionadas_upa_ubs]
-
 
 # Aplicar os filtros
 dfu_filtrado = dfu[dfu["Servico"].isin(servicos_selecionados_upa_ubs)]
@@ -262,18 +249,18 @@ for _, row in dfu_filtrado.iterrows():
     atendimento = row["Atendimento"]    
     cor = colors.get(servico, "gray")
 
-    descricao = row['Unidade']  # ou 'Descricao', dependendo da sua planilha
+    descricao = row['Unidade']  
 
     if "upa" in descricao.lower():
         cor = "red"
-        radius= 5 + atendimento / 30  # opcional: ajusta o tamanho ao volume        
+        radius= 5 + atendimento / 30  # Ajusta o tamanho ao volume        
         if radius > 15:
             radius = 15
     else:
     # elif "basica" in descricao.lower():
         cor = colors.get(servico, "gray")
         # cor = "blue"
-        radius= 5 + atendimento / 30  # opcional: ajusta o tamanho ao volume        
+        radius= 5 + atendimento / 30  # Ajusta o tamanho ao volume        
         if radius > 10:
             radius = 10
     # else:
@@ -317,7 +304,6 @@ folium.Marker(
 ).add_to(mu)
 
 # ---------- 5. Exibir o Mapa no Streamlit ----------
-
 st.subheader("Em Contagem: Encaminhamentos de UPAs (S1) e Regiões  (S2 a S11) ao Inova Parque")
 # st_data = st_folium(m, width=900, height=600)
 st_data = st_folium(mu, width=1600, height=800)
