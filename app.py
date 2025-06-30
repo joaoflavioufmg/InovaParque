@@ -1,3 +1,16 @@
+#############################################################################
+# Projeto Hospital Inova Parque (Contagem)
+# Equipe: 
+# Carlos Soares 
+# Francisco Cardoso 
+# Ivan Black 
+# Lasara Fabricia Rodrigues 
+# Desenvolvimento: João Flávio de Freitas Almeida <joao.flavio@dep.ufmg.br>
+# LEPOINT: Laboratório de Estudos em Planejamento de Operações Integradas
+# Departamento de Engenharia de Produção
+# Universidade Federal de Minas Gerais - Escola de Engenharia
+#############################################################################
+
 import streamlit as st
 import pandas as pd
 import folium
