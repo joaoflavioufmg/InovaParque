@@ -1,5 +1,7 @@
 # Visualizações Georreferenciadas do Modelo de Dimensionamento Hospitalar
 
+**Equipe**: _Carlos, Francisco, Ivan, João Flávio, Lasara, Leonardo e Marcone_
+
 O aplicativo hospedado em [https://inovaparque.streamlit.app/](https://inovaparque.streamlit.app/) e ilustrado na **Figura 1** permite a visualização georreferenciada dos resultados gerados a partir de um modelo matemático de dimensionamento hospitalar. Essa ferramenta interativa facilita a análise espacial da demanda por serviços hospitalares, permitindo que usuários explorem diferentes configurações de cobertura territorial e observem como a localização geográfica influencia a atratividade e a demanda potencial para o hospital planejado no Inova Parque, em Contagem (MG).
 
 <p align="center">

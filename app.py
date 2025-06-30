@@ -4,7 +4,9 @@
 # Carlos Soares 
 # Francisco Cardoso 
 # Ivan Black 
+# Leonardo
 # Lasara Fabricia Rodrigues 
+# Macone 
 # Desenvolvimento: João Flávio de Freitas Almeida <joao.flavio@dep.ufmg.br>
 # LEPOINT: Laboratório de Estudos em Planejamento de Operações Integradas
 # Departamento de Engenharia de Produção
